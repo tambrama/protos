@@ -22,13 +22,13 @@ message RegisterRequest {
 }
 
 message RegisterResponse {
-  int64 user_id = 1;
+  string user_id = 1;
 }
 
 message LoginRequest {
     string email = 1;
     string password = 2;
-    int64 app_id = 3;
+    string app_id = 3;
 }
 
 message LoginResponse {
@@ -36,7 +36,7 @@ message LoginResponse {
 }
 
 message IsAdminRequest {
-  int64 user_id = 1;
+  string user_id = 1;
 }
 
 message IsAdminResponse {
