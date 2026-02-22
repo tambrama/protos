@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "auth_service/internal/pb;pb";
+
+service Auth {
+   rpc Register (RegisterRequest) returns (RegisterResponse);
+   rpc Login (LoginRequest) returns (LoginResponse);
+   rpc IsAdmin (IsAdminRequest) returns (IsAdminResponse);
+   rpc ChangePassword (ChangePasswordRequest) returns (Empty);
+   rpc RestorePassword (RestorePasswordRequest) returns (Empty);
+}
+
+message RegisterRequest {
+  string email = 1;
+  string password = 2;
+  string name = 3;
+  string surname = 4;
+  string phone_number = 5;
+
+}
+
+message RegisterResponse {
+  int64 user_id = 1;
+}
+
+message LoginRequest {
+    string email = 1;
+    string password = 2;
+    int64 app_id = 3;
+}
+
+message LoginResponse {
+  string token = 1;
+}
+
+message IsAdminRequest {
+  int64 user_id = 1;
+}
+
+message IsAdminResponse {
+  bool is_admin = 1;
+}
+
+message ChangePasswordRequest {
+  string email = 1; 
+  string old_password = 2;
+  string new_password = 3;
+}
+
+message RestorePasswordRequest {
+  string email = 1;
+}
+
+message Empty {}
