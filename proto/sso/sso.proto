@@ -7,6 +7,8 @@ option go_package = "auth_service/internal/pb;pb";
 service Auth {
    rpc Register (RegisterRequest) returns (RegisterResponse);
    rpc Login (LoginRequest) returns (LoginResponse);
+   rpc Refresh (RefreshRequest) returns (LoginResponse);
+   rpc Logout (LogoutRequest) returns (Empty);
    rpc IsAdmin (IsAdminRequest) returns (IsAdminResponse);
    rpc ChangePassword (ChangePasswordRequest) returns (Empty);
    rpc RestorePassword (RestorePasswordRequest) returns (Empty);
@@ -55,3 +57,12 @@ message RestorePasswordRequest {
 }
 
 message Empty {}
+
+message RefreshRequest {
+  string refresh_token = 1;
+  string app_id = 2; 
+}
+
+message LogoutRequest {
+  string refresh_token = 1; 
+}
