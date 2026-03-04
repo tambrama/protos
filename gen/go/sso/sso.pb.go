@@ -577,6 +577,102 @@ func (x *LogoutRequest) GetRefreshToken() string {
 	return ""
 }
 
+type ValidateRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Token         string                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ValidateRequest) Reset() {
+	*x = ValidateRequest{}
+	mi := &file_sso_sso_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ValidateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ValidateRequest) ProtoMessage() {}
+
+func (x *ValidateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sso_sso_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ValidateRequest.ProtoReflect.Descriptor instead.
+func (*ValidateRequest) Descriptor() ([]byte, []int) {
+	return file_sso_sso_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *ValidateRequest) GetToken() string {
+	if x != nil {
+		return x.Token
+	}
+	return ""
+}
+
+type ValidateResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	AppId         string                 `protobuf:"bytes,2,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ValidateResponse) Reset() {
+	*x = ValidateResponse{}
+	mi := &file_sso_sso_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ValidateResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ValidateResponse) ProtoMessage() {}
+
+func (x *ValidateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sso_sso_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ValidateResponse.ProtoReflect.Descriptor instead.
+func (*ValidateResponse) Descriptor() ([]byte, []int) {
+	return file_sso_sso_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *ValidateResponse) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *ValidateResponse) GetAppId() string {
+	if x != nil {
+		return x.AppId
+	}
+	return ""
+}
+
 var File_sso_sso_proto protoreflect.FileDescriptor
 
 const file_sso_sso_proto_rawDesc = "" +
@@ -612,11 +708,17 @@ const file_sso_sso_proto_rawDesc = "" +
 	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\x12\x15\n" +
 	"\x06app_id\x18\x02 \x01(\tR\x05appId\"4\n" +
 	"\rLogoutRequest\x12#\n" +
-	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken2\x87\x03\n" +
+	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"'\n" +
+	"\x0fValidateRequest\x12\x14\n" +
+	"\x05token\x18\x01 \x01(\tR\x05token\"B\n" +
+	"\x10ValidateResponse\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x15\n" +
+	"\x06app_id\x18\x02 \x01(\tR\x05appId2\xc2\x03\n" +
 	"\x04Auth\x129\n" +
 	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\x120\n" +
 	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x124\n" +
-	"\aRefresh\x12\x14.auth.RefreshRequest\x1a\x13.auth.LoginResponse\x12*\n" +
+	"\aRefresh\x12\x14.auth.RefreshRequest\x1a\x13.auth.LoginResponse\x129\n" +
+	"\bValidate\x12\x15.auth.ValidateRequest\x1a\x16.auth.ValidateResponse\x12*\n" +
 	"\x06Logout\x12\x13.auth.LogoutRequest\x1a\v.auth.Empty\x126\n" +
 	"\aIsAdmin\x12\x14.auth.IsAdminRequest\x1a\x15.auth.IsAdminResponse\x12:\n" +
 	"\x0eChangePassword\x12\x1b.auth.ChangePasswordRequest\x1a\v.auth.Empty\x12<\n" +
@@ -634,7 +736,7 @@ func file_sso_sso_proto_rawDescGZIP() []byte {
 	return file_sso_sso_proto_rawDescData
 }
 
-var file_sso_sso_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_sso_sso_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_sso_sso_proto_goTypes = []any{
 	(*RegisterRequest)(nil),        // 0: auth.RegisterRequest
 	(*RegisterResponse)(nil),       // 1: auth.RegisterResponse
@@ -647,24 +749,28 @@ var file_sso_sso_proto_goTypes = []any{
 	(*Empty)(nil),                  // 8: auth.Empty
 	(*RefreshRequest)(nil),         // 9: auth.RefreshRequest
 	(*LogoutRequest)(nil),          // 10: auth.LogoutRequest
+	(*ValidateRequest)(nil),        // 11: auth.ValidateRequest
+	(*ValidateResponse)(nil),       // 12: auth.ValidateResponse
 }
 var file_sso_sso_proto_depIdxs = []int32{
 	0,  // 0: auth.Auth.Register:input_type -> auth.RegisterRequest
 	2,  // 1: auth.Auth.Login:input_type -> auth.LoginRequest
 	9,  // 2: auth.Auth.Refresh:input_type -> auth.RefreshRequest
-	10, // 3: auth.Auth.Logout:input_type -> auth.LogoutRequest
-	4,  // 4: auth.Auth.IsAdmin:input_type -> auth.IsAdminRequest
-	6,  // 5: auth.Auth.ChangePassword:input_type -> auth.ChangePasswordRequest
-	7,  // 6: auth.Auth.RestorePassword:input_type -> auth.RestorePasswordRequest
-	1,  // 7: auth.Auth.Register:output_type -> auth.RegisterResponse
-	3,  // 8: auth.Auth.Login:output_type -> auth.LoginResponse
-	3,  // 9: auth.Auth.Refresh:output_type -> auth.LoginResponse
-	8,  // 10: auth.Auth.Logout:output_type -> auth.Empty
-	5,  // 11: auth.Auth.IsAdmin:output_type -> auth.IsAdminResponse
-	8,  // 12: auth.Auth.ChangePassword:output_type -> auth.Empty
-	8,  // 13: auth.Auth.RestorePassword:output_type -> auth.Empty
-	7,  // [7:14] is the sub-list for method output_type
-	0,  // [0:7] is the sub-list for method input_type
+	11, // 3: auth.Auth.Validate:input_type -> auth.ValidateRequest
+	10, // 4: auth.Auth.Logout:input_type -> auth.LogoutRequest
+	4,  // 5: auth.Auth.IsAdmin:input_type -> auth.IsAdminRequest
+	6,  // 6: auth.Auth.ChangePassword:input_type -> auth.ChangePasswordRequest
+	7,  // 7: auth.Auth.RestorePassword:input_type -> auth.RestorePasswordRequest
+	1,  // 8: auth.Auth.Register:output_type -> auth.RegisterResponse
+	3,  // 9: auth.Auth.Login:output_type -> auth.LoginResponse
+	3,  // 10: auth.Auth.Refresh:output_type -> auth.LoginResponse
+	12, // 11: auth.Auth.Validate:output_type -> auth.ValidateResponse
+	8,  // 12: auth.Auth.Logout:output_type -> auth.Empty
+	5,  // 13: auth.Auth.IsAdmin:output_type -> auth.IsAdminResponse
+	8,  // 14: auth.Auth.ChangePassword:output_type -> auth.Empty
+	8,  // 15: auth.Auth.RestorePassword:output_type -> auth.Empty
+	8,  // [8:16] is the sub-list for method output_type
+	0,  // [0:8] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
@@ -681,7 +787,7 @@ func file_sso_sso_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sso_sso_proto_rawDesc), len(file_sso_sso_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
