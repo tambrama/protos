@@ -65,7 +65,8 @@ message RefreshRequest {
 }
 
 message LogoutRequest {
-  string refresh_token = 1; 
+  string user_id = 1;
+  string app_id  = 2;
 }
 
 message ValidateRequest {

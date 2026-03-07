@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rsso/sso.proto\x12\x04\x61uth\"g\n\x0fRegisterRequest\x12\r\n\x05\x65mail\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x0f\n\x07surname\x18\x04 \x01(\t\x12\x14\n\x0cphone_number\x18\x05 \x01(\t\"#\n\x10RegisterResponse\x12\x0f\n\x07user_id\x18\x01 \x01(\t\"?\n\x0cLoginRequest\x12\r\n\x05\x65mail\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\x12\x0e\n\x06\x61pp_id\x18\x03 \x01(\t\"<\n\rLoginResponse\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\x15\n\rrefresh_token\x18\x02 \x01(\t\"!\n\x0eIsAdminRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\t\"#\n\x0fIsAdminResponse\x12\x10\n\x08is_admin\x18\x01 \x01(\x08\"R\n\x15\x43hangePasswordRequest\x12\r\n\x05\x65mail\x18\x01 \x01(\t\x12\x14\n\x0cold_password\x18\x02 \x01(\t\x12\x14\n\x0cnew_password\x18\x03 \x01(\t\"\'\n\x16RestorePasswordRequest\x12\r\n\x05\x65mail\x18\x01 \x01(\t\"\x07\n\x05\x45mpty\"7\n\x0eRefreshRequest\x12\x15\n\rrefresh_token\x18\x01 \x01(\t\x12\x0e\n\x06\x61pp_id\x18\x02 \x01(\t\"&\n\rLogoutRequest\x12\x15\n\rrefresh_token\x18\x01 \x01(\t\" \n\x0fValidateRequest\x12\r\n\x05token\x18\x01 \x01(\t\"3\n\x10ValidateResponse\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x12\x0e\n\x06\x61pp_id\x18\x02 \x01(\t2\xc2\x03\n\x04\x41uth\x12\x39\n\x08Register\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\x12\x30\n\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x12\x34\n\x07Refresh\x12\x14.auth.RefreshRequest\x1a\x13.auth.LoginResponse\x12\x39\n\x08Validate\x12\x15.auth.ValidateRequest\x1a\x16.auth.ValidateResponse\x12*\n\x06Logout\x12\x13.auth.LogoutRequest\x1a\x0b.auth.Empty\x12\x36\n\x07IsAdmin\x12\x14.auth.IsAdminRequest\x1a\x15.auth.IsAdminResponse\x12:\n\x0e\x43hangePassword\x12\x1b.auth.ChangePasswordRequest\x1a\x0b.auth.Empty\x12<\n\x0fRestorePassword\x12\x1c.auth.RestorePasswordRequest\x1a\x0b.auth.EmptyB\x1dZ\x1b\x61uth_service/internal/pb;pbb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rsso/sso.proto\x12\x04\x61uth\"g\n\x0fRegisterRequest\x12\r\n\x05\x65mail\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x0f\n\x07surname\x18\x04 \x01(\t\x12\x14\n\x0cphone_number\x18\x05 \x01(\t\"#\n\x10RegisterResponse\x12\x0f\n\x07user_id\x18\x01 \x01(\t\"?\n\x0cLoginRequest\x12\r\n\x05\x65mail\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\x12\x0e\n\x06\x61pp_id\x18\x03 \x01(\t\"<\n\rLoginResponse\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\x15\n\rrefresh_token\x18\x02 \x01(\t\"!\n\x0eIsAdminRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\t\"#\n\x0fIsAdminResponse\x12\x10\n\x08is_admin\x18\x01 \x01(\x08\"R\n\x15\x43hangePasswordRequest\x12\r\n\x05\x65mail\x18\x01 \x01(\t\x12\x14\n\x0cold_password\x18\x02 \x01(\t\x12\x14\n\x0cnew_password\x18\x03 \x01(\t\"\'\n\x16RestorePasswordRequest\x12\r\n\x05\x65mail\x18\x01 \x01(\t\"\x07\n\x05\x45mpty\"7\n\x0eRefreshRequest\x12\x15\n\rrefresh_token\x18\x01 \x01(\t\x12\x0e\n\x06\x61pp_id\x18\x02 \x01(\t\"0\n\rLogoutRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x12\x0e\n\x06\x61pp_id\x18\x02 \x01(\t\" \n\x0fValidateRequest\x12\r\n\x05token\x18\x01 \x01(\t\"3\n\x10ValidateResponse\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x12\x0e\n\x06\x61pp_id\x18\x02 \x01(\t2\xc2\x03\n\x04\x41uth\x12\x39\n\x08Register\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\x12\x30\n\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x12\x34\n\x07Refresh\x12\x14.auth.RefreshRequest\x1a\x13.auth.LoginResponse\x12\x39\n\x08Validate\x12\x15.auth.ValidateRequest\x1a\x16.auth.ValidateResponse\x12*\n\x06Logout\x12\x13.auth.LogoutRequest\x1a\x0b.auth.Empty\x12\x36\n\x07IsAdmin\x12\x14.auth.IsAdminRequest\x1a\x15.auth.IsAdminResponse\x12:\n\x0e\x43hangePassword\x12\x1b.auth.ChangePasswordRequest\x1a\x0b.auth.Empty\x12<\n\x0fRestorePassword\x12\x1c.auth.RestorePasswordRequest\x1a\x0b.auth.EmptyB\x1dZ\x1b\x61uth_service/internal/pb;pbb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -53,11 +53,11 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_REFRESHREQUEST']._serialized_start=498
   _globals['_REFRESHREQUEST']._serialized_end=553
   _globals['_LOGOUTREQUEST']._serialized_start=555
-  _globals['_LOGOUTREQUEST']._serialized_end=593
-  _globals['_VALIDATEREQUEST']._serialized_start=595
-  _globals['_VALIDATEREQUEST']._serialized_end=627
-  _globals['_VALIDATERESPONSE']._serialized_start=629
-  _globals['_VALIDATERESPONSE']._serialized_end=680
-  _globals['_AUTH']._serialized_start=683
-  _globals['_AUTH']._serialized_end=1133
+  _globals['_LOGOUTREQUEST']._serialized_end=603
+  _globals['_VALIDATEREQUEST']._serialized_start=605
+  _globals['_VALIDATEREQUEST']._serialized_end=637
+  _globals['_VALIDATERESPONSE']._serialized_start=639
+  _globals['_VALIDATERESPONSE']._serialized_end=690
+  _globals['_AUTH']._serialized_start=693
+  _globals['_AUTH']._serialized_end=1143
 # @@protoc_insertion_point(module_scope)
