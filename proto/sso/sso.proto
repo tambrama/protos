@@ -13,6 +13,8 @@ service Auth {
    rpc IsAdmin (IsAdminRequest) returns (IsAdminResponse);
    rpc ChangePassword (ChangePasswordRequest) returns (Empty);
    rpc RestorePassword (RestorePasswordRequest) returns (Empty);
+   rpc GetGoogleAuthURL(GetGoogleAuthURLRequest) returns (GetGoogleAuthURLResponse);
+   rpc GoogleCallback(GoogleCallbackRequest) returns (LoginResponse);
 }
 
 message RegisterRequest {
@@ -76,4 +78,18 @@ message ValidateRequest {
 message ValidateResponse {
   string user_id = 1;
   string app_id = 2;
+}
+
+message GetGoogleAuthURLRequest {
+  string state = 1; 
+}
+
+message GetGoogleAuthURLResponse {
+  string auth_url = 1; 
+}
+
+message GoogleCallbackRequest {
+  string code = 1;   
+  string state = 2;
+  string app_id = 3; 
 }

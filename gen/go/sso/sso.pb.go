@@ -681,6 +681,154 @@ func (x *ValidateResponse) GetAppId() string {
 	return ""
 }
 
+type GetGoogleAuthURLRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	State         string                 `protobuf:"bytes,1,opt,name=state,proto3" json:"state,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetGoogleAuthURLRequest) Reset() {
+	*x = GetGoogleAuthURLRequest{}
+	mi := &file_sso_sso_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetGoogleAuthURLRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetGoogleAuthURLRequest) ProtoMessage() {}
+
+func (x *GetGoogleAuthURLRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sso_sso_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetGoogleAuthURLRequest.ProtoReflect.Descriptor instead.
+func (*GetGoogleAuthURLRequest) Descriptor() ([]byte, []int) {
+	return file_sso_sso_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *GetGoogleAuthURLRequest) GetState() string {
+	if x != nil {
+		return x.State
+	}
+	return ""
+}
+
+type GetGoogleAuthURLResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AuthUrl       string                 `protobuf:"bytes,1,opt,name=auth_url,json=authUrl,proto3" json:"auth_url,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetGoogleAuthURLResponse) Reset() {
+	*x = GetGoogleAuthURLResponse{}
+	mi := &file_sso_sso_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetGoogleAuthURLResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetGoogleAuthURLResponse) ProtoMessage() {}
+
+func (x *GetGoogleAuthURLResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sso_sso_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetGoogleAuthURLResponse.ProtoReflect.Descriptor instead.
+func (*GetGoogleAuthURLResponse) Descriptor() ([]byte, []int) {
+	return file_sso_sso_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *GetGoogleAuthURLResponse) GetAuthUrl() string {
+	if x != nil {
+		return x.AuthUrl
+	}
+	return ""
+}
+
+type GoogleCallbackRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Code          string                 `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
+	State         string                 `protobuf:"bytes,2,opt,name=state,proto3" json:"state,omitempty"`
+	AppId         string                 `protobuf:"bytes,3,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GoogleCallbackRequest) Reset() {
+	*x = GoogleCallbackRequest{}
+	mi := &file_sso_sso_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GoogleCallbackRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GoogleCallbackRequest) ProtoMessage() {}
+
+func (x *GoogleCallbackRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sso_sso_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GoogleCallbackRequest.ProtoReflect.Descriptor instead.
+func (*GoogleCallbackRequest) Descriptor() ([]byte, []int) {
+	return file_sso_sso_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *GoogleCallbackRequest) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
+func (x *GoogleCallbackRequest) GetState() string {
+	if x != nil {
+		return x.State
+	}
+	return ""
+}
+
+func (x *GoogleCallbackRequest) GetAppId() string {
+	if x != nil {
+		return x.AppId
+	}
+	return ""
+}
+
 var File_sso_sso_proto protoreflect.FileDescriptor
 
 const file_sso_sso_proto_rawDesc = "" +
@@ -722,7 +870,15 @@ const file_sso_sso_proto_rawDesc = "" +
 	"\x05token\x18\x01 \x01(\tR\x05token\"B\n" +
 	"\x10ValidateResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x15\n" +
-	"\x06app_id\x18\x02 \x01(\tR\x05appId2\xc2\x03\n" +
+	"\x06app_id\x18\x02 \x01(\tR\x05appId\"/\n" +
+	"\x17GetGoogleAuthURLRequest\x12\x14\n" +
+	"\x05state\x18\x01 \x01(\tR\x05state\"5\n" +
+	"\x18GetGoogleAuthURLResponse\x12\x19\n" +
+	"\bauth_url\x18\x01 \x01(\tR\aauthUrl\"X\n" +
+	"\x15GoogleCallbackRequest\x12\x12\n" +
+	"\x04code\x18\x01 \x01(\tR\x04code\x12\x14\n" +
+	"\x05state\x18\x02 \x01(\tR\x05state\x12\x15\n" +
+	"\x06app_id\x18\x03 \x01(\tR\x05appId2\xd9\x04\n" +
 	"\x04Auth\x129\n" +
 	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\x120\n" +
 	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x124\n" +
@@ -731,7 +887,9 @@ const file_sso_sso_proto_rawDesc = "" +
 	"\x06Logout\x12\x13.auth.LogoutRequest\x1a\v.auth.Empty\x126\n" +
 	"\aIsAdmin\x12\x14.auth.IsAdminRequest\x1a\x15.auth.IsAdminResponse\x12:\n" +
 	"\x0eChangePassword\x12\x1b.auth.ChangePasswordRequest\x1a\v.auth.Empty\x12<\n" +
-	"\x0fRestorePassword\x12\x1c.auth.RestorePasswordRequest\x1a\v.auth.EmptyB\x1dZ\x1bauth_service/internal/pb;pbb\x06proto3"
+	"\x0fRestorePassword\x12\x1c.auth.RestorePasswordRequest\x1a\v.auth.Empty\x12Q\n" +
+	"\x10GetGoogleAuthURL\x12\x1d.auth.GetGoogleAuthURLRequest\x1a\x1e.auth.GetGoogleAuthURLResponse\x12B\n" +
+	"\x0eGoogleCallback\x12\x1b.auth.GoogleCallbackRequest\x1a\x13.auth.LoginResponseB\x1dZ\x1bauth_service/internal/pb;pbb\x06proto3"
 
 var (
 	file_sso_sso_proto_rawDescOnce sync.Once
@@ -745,21 +903,24 @@ func file_sso_sso_proto_rawDescGZIP() []byte {
 	return file_sso_sso_proto_rawDescData
 }
 
-var file_sso_sso_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_sso_sso_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
 var file_sso_sso_proto_goTypes = []any{
-	(*RegisterRequest)(nil),        // 0: auth.RegisterRequest
-	(*RegisterResponse)(nil),       // 1: auth.RegisterResponse
-	(*LoginRequest)(nil),           // 2: auth.LoginRequest
-	(*LoginResponse)(nil),          // 3: auth.LoginResponse
-	(*IsAdminRequest)(nil),         // 4: auth.IsAdminRequest
-	(*IsAdminResponse)(nil),        // 5: auth.IsAdminResponse
-	(*ChangePasswordRequest)(nil),  // 6: auth.ChangePasswordRequest
-	(*RestorePasswordRequest)(nil), // 7: auth.RestorePasswordRequest
-	(*Empty)(nil),                  // 8: auth.Empty
-	(*RefreshRequest)(nil),         // 9: auth.RefreshRequest
-	(*LogoutRequest)(nil),          // 10: auth.LogoutRequest
-	(*ValidateRequest)(nil),        // 11: auth.ValidateRequest
-	(*ValidateResponse)(nil),       // 12: auth.ValidateResponse
+	(*RegisterRequest)(nil),          // 0: auth.RegisterRequest
+	(*RegisterResponse)(nil),         // 1: auth.RegisterResponse
+	(*LoginRequest)(nil),             // 2: auth.LoginRequest
+	(*LoginResponse)(nil),            // 3: auth.LoginResponse
+	(*IsAdminRequest)(nil),           // 4: auth.IsAdminRequest
+	(*IsAdminResponse)(nil),          // 5: auth.IsAdminResponse
+	(*ChangePasswordRequest)(nil),    // 6: auth.ChangePasswordRequest
+	(*RestorePasswordRequest)(nil),   // 7: auth.RestorePasswordRequest
+	(*Empty)(nil),                    // 8: auth.Empty
+	(*RefreshRequest)(nil),           // 9: auth.RefreshRequest
+	(*LogoutRequest)(nil),            // 10: auth.LogoutRequest
+	(*ValidateRequest)(nil),          // 11: auth.ValidateRequest
+	(*ValidateResponse)(nil),         // 12: auth.ValidateResponse
+	(*GetGoogleAuthURLRequest)(nil),  // 13: auth.GetGoogleAuthURLRequest
+	(*GetGoogleAuthURLResponse)(nil), // 14: auth.GetGoogleAuthURLResponse
+	(*GoogleCallbackRequest)(nil),    // 15: auth.GoogleCallbackRequest
 }
 var file_sso_sso_proto_depIdxs = []int32{
 	0,  // 0: auth.Auth.Register:input_type -> auth.RegisterRequest
@@ -770,16 +931,20 @@ var file_sso_sso_proto_depIdxs = []int32{
 	4,  // 5: auth.Auth.IsAdmin:input_type -> auth.IsAdminRequest
 	6,  // 6: auth.Auth.ChangePassword:input_type -> auth.ChangePasswordRequest
 	7,  // 7: auth.Auth.RestorePassword:input_type -> auth.RestorePasswordRequest
-	1,  // 8: auth.Auth.Register:output_type -> auth.RegisterResponse
-	3,  // 9: auth.Auth.Login:output_type -> auth.LoginResponse
-	3,  // 10: auth.Auth.Refresh:output_type -> auth.LoginResponse
-	12, // 11: auth.Auth.Validate:output_type -> auth.ValidateResponse
-	8,  // 12: auth.Auth.Logout:output_type -> auth.Empty
-	5,  // 13: auth.Auth.IsAdmin:output_type -> auth.IsAdminResponse
-	8,  // 14: auth.Auth.ChangePassword:output_type -> auth.Empty
-	8,  // 15: auth.Auth.RestorePassword:output_type -> auth.Empty
-	8,  // [8:16] is the sub-list for method output_type
-	0,  // [0:8] is the sub-list for method input_type
+	13, // 8: auth.Auth.GetGoogleAuthURL:input_type -> auth.GetGoogleAuthURLRequest
+	15, // 9: auth.Auth.GoogleCallback:input_type -> auth.GoogleCallbackRequest
+	1,  // 10: auth.Auth.Register:output_type -> auth.RegisterResponse
+	3,  // 11: auth.Auth.Login:output_type -> auth.LoginResponse
+	3,  // 12: auth.Auth.Refresh:output_type -> auth.LoginResponse
+	12, // 13: auth.Auth.Validate:output_type -> auth.ValidateResponse
+	8,  // 14: auth.Auth.Logout:output_type -> auth.Empty
+	5,  // 15: auth.Auth.IsAdmin:output_type -> auth.IsAdminResponse
+	8,  // 16: auth.Auth.ChangePassword:output_type -> auth.Empty
+	8,  // 17: auth.Auth.RestorePassword:output_type -> auth.Empty
+	14, // 18: auth.Auth.GetGoogleAuthURL:output_type -> auth.GetGoogleAuthURLResponse
+	3,  // 19: auth.Auth.GoogleCallback:output_type -> auth.LoginResponse
+	10, // [10:20] is the sub-list for method output_type
+	0,  // [0:10] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
@@ -796,7 +961,7 @@ func file_sso_sso_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sso_sso_proto_rawDesc), len(file_sso_sso_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   13,
+			NumMessages:   16,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

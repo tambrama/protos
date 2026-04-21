@@ -19,14 +19,16 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Auth_Register_FullMethodName        = "/auth.Auth/Register"
-	Auth_Login_FullMethodName           = "/auth.Auth/Login"
-	Auth_Refresh_FullMethodName         = "/auth.Auth/Refresh"
-	Auth_Validate_FullMethodName        = "/auth.Auth/Validate"
-	Auth_Logout_FullMethodName          = "/auth.Auth/Logout"
-	Auth_IsAdmin_FullMethodName         = "/auth.Auth/IsAdmin"
-	Auth_ChangePassword_FullMethodName  = "/auth.Auth/ChangePassword"
-	Auth_RestorePassword_FullMethodName = "/auth.Auth/RestorePassword"
+	Auth_Register_FullMethodName         = "/auth.Auth/Register"
+	Auth_Login_FullMethodName            = "/auth.Auth/Login"
+	Auth_Refresh_FullMethodName          = "/auth.Auth/Refresh"
+	Auth_Validate_FullMethodName         = "/auth.Auth/Validate"
+	Auth_Logout_FullMethodName           = "/auth.Auth/Logout"
+	Auth_IsAdmin_FullMethodName          = "/auth.Auth/IsAdmin"
+	Auth_ChangePassword_FullMethodName   = "/auth.Auth/ChangePassword"
+	Auth_RestorePassword_FullMethodName  = "/auth.Auth/RestorePassword"
+	Auth_GetGoogleAuthURL_FullMethodName = "/auth.Auth/GetGoogleAuthURL"
+	Auth_GoogleCallback_FullMethodName   = "/auth.Auth/GoogleCallback"
 )
 
 // AuthClient is the client API for Auth service.
@@ -41,6 +43,8 @@ type AuthClient interface {
 	IsAdmin(ctx context.Context, in *IsAdminRequest, opts ...grpc.CallOption) (*IsAdminResponse, error)
 	ChangePassword(ctx context.Context, in *ChangePasswordRequest, opts ...grpc.CallOption) (*Empty, error)
 	RestorePassword(ctx context.Context, in *RestorePasswordRequest, opts ...grpc.CallOption) (*Empty, error)
+	GetGoogleAuthURL(ctx context.Context, in *GetGoogleAuthURLRequest, opts ...grpc.CallOption) (*GetGoogleAuthURLResponse, error)
+	GoogleCallback(ctx context.Context, in *GoogleCallbackRequest, opts ...grpc.CallOption) (*LoginResponse, error)
 }
 
 type authClient struct {
@@ -131,6 +135,26 @@ func (c *authClient) RestorePassword(ctx context.Context, in *RestorePasswordReq
 	return out, nil
 }
 
+func (c *authClient) GetGoogleAuthURL(ctx context.Context, in *GetGoogleAuthURLRequest, opts ...grpc.CallOption) (*GetGoogleAuthURLResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetGoogleAuthURLResponse)
+	err := c.cc.Invoke(ctx, Auth_GetGoogleAuthURL_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authClient) GoogleCallback(ctx context.Context, in *GoogleCallbackRequest, opts ...grpc.CallOption) (*LoginResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(LoginResponse)
+	err := c.cc.Invoke(ctx, Auth_GoogleCallback_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AuthServer is the server API for Auth service.
 // All implementations must embed UnimplementedAuthServer
 // for forward compatibility.
@@ -143,6 +167,8 @@ type AuthServer interface {
 	IsAdmin(context.Context, *IsAdminRequest) (*IsAdminResponse, error)
 	ChangePassword(context.Context, *ChangePasswordRequest) (*Empty, error)
 	RestorePassword(context.Context, *RestorePasswordRequest) (*Empty, error)
+	GetGoogleAuthURL(context.Context, *GetGoogleAuthURLRequest) (*GetGoogleAuthURLResponse, error)
+	GoogleCallback(context.Context, *GoogleCallbackRequest) (*LoginResponse, error)
 	mustEmbedUnimplementedAuthServer()
 }
 
@@ -176,6 +202,12 @@ func (UnimplementedAuthServer) ChangePassword(context.Context, *ChangePasswordRe
 }
 func (UnimplementedAuthServer) RestorePassword(context.Context, *RestorePasswordRequest) (*Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method RestorePassword not implemented")
+}
+func (UnimplementedAuthServer) GetGoogleAuthURL(context.Context, *GetGoogleAuthURLRequest) (*GetGoogleAuthURLResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetGoogleAuthURL not implemented")
+}
+func (UnimplementedAuthServer) GoogleCallback(context.Context, *GoogleCallbackRequest) (*LoginResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GoogleCallback not implemented")
 }
 func (UnimplementedAuthServer) mustEmbedUnimplementedAuthServer() {}
 func (UnimplementedAuthServer) testEmbeddedByValue()              {}
@@ -342,6 +374,42 @@ func _Auth_RestorePassword_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Auth_GetGoogleAuthURL_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetGoogleAuthURLRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServer).GetGoogleAuthURL(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Auth_GetGoogleAuthURL_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServer).GetGoogleAuthURL(ctx, req.(*GetGoogleAuthURLRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Auth_GoogleCallback_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GoogleCallbackRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServer).GoogleCallback(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Auth_GoogleCallback_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServer).GoogleCallback(ctx, req.(*GoogleCallbackRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Auth_ServiceDesc is the grpc.ServiceDesc for Auth service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -380,6 +448,14 @@ var Auth_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RestorePassword",
 			Handler:    _Auth_RestorePassword_Handler,
+		},
+		{
+			MethodName: "GetGoogleAuthURL",
+			Handler:    _Auth_GetGoogleAuthURL_Handler,
+		},
+		{
+			MethodName: "GoogleCallback",
+			Handler:    _Auth_GoogleCallback_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

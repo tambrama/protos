@@ -74,6 +74,16 @@ class AuthStub(object):
                 request_serializer=sso_dot_sso__pb2.RestorePasswordRequest.SerializeToString,
                 response_deserializer=sso_dot_sso__pb2.Empty.FromString,
                 _registered_method=True)
+        self.GetGoogleAuthURL = channel.unary_unary(
+                '/auth.Auth/GetGoogleAuthURL',
+                request_serializer=sso_dot_sso__pb2.GetGoogleAuthURLRequest.SerializeToString,
+                response_deserializer=sso_dot_sso__pb2.GetGoogleAuthURLResponse.FromString,
+                _registered_method=True)
+        self.GoogleCallback = channel.unary_unary(
+                '/auth.Auth/GoogleCallback',
+                request_serializer=sso_dot_sso__pb2.GoogleCallbackRequest.SerializeToString,
+                response_deserializer=sso_dot_sso__pb2.LoginResponse.FromString,
+                _registered_method=True)
 
 
 class AuthServicer(object):
@@ -127,6 +137,18 @@ class AuthServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetGoogleAuthURL(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GoogleCallback(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_AuthServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -169,6 +191,16 @@ def add_AuthServicer_to_server(servicer, server):
                     servicer.RestorePassword,
                     request_deserializer=sso_dot_sso__pb2.RestorePasswordRequest.FromString,
                     response_serializer=sso_dot_sso__pb2.Empty.SerializeToString,
+            ),
+            'GetGoogleAuthURL': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetGoogleAuthURL,
+                    request_deserializer=sso_dot_sso__pb2.GetGoogleAuthURLRequest.FromString,
+                    response_serializer=sso_dot_sso__pb2.GetGoogleAuthURLResponse.SerializeToString,
+            ),
+            'GoogleCallback': grpc.unary_unary_rpc_method_handler(
+                    servicer.GoogleCallback,
+                    request_deserializer=sso_dot_sso__pb2.GoogleCallbackRequest.FromString,
+                    response_serializer=sso_dot_sso__pb2.LoginResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -387,6 +419,60 @@ class Auth(object):
             '/auth.Auth/RestorePassword',
             sso_dot_sso__pb2.RestorePasswordRequest.SerializeToString,
             sso_dot_sso__pb2.Empty.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetGoogleAuthURL(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/auth.Auth/GetGoogleAuthURL',
+            sso_dot_sso__pb2.GetGoogleAuthURLRequest.SerializeToString,
+            sso_dot_sso__pb2.GetGoogleAuthURLResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GoogleCallback(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/auth.Auth/GoogleCallback',
+            sso_dot_sso__pb2.GoogleCallbackRequest.SerializeToString,
+            sso_dot_sso__pb2.LoginResponse.FromString,
             options,
             channel_credentials,
             insecure,
